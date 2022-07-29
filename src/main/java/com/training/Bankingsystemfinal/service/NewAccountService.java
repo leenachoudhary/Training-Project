@@ -27,10 +27,10 @@ public class NewAccountService {
         if(!userRepository.existsByUsername(newUser.getUsername())) {
             userRepository.save(newUser);
             System.out.println("data save..");
-//            NewAccountDTO accountDTO = new NewAccountDTO(newUser.getFirstName(), newUser.getLastName(), newUser.getAddress(),
-//                    newUser.getUsername(), newUser.getPassword(), newUser.getAccountNo(), newUser.getBalance());
+            NewAccountDTO accountDTO = new NewAccountDTO(newUser.getFirstName(), newUser.getLastName(), newUser.getAddress(),
+                    newUser.getUsername(), newUser.getPassword(), newUser.getAccountNo(), newUser.getBalance());
 
-            return new ResponseEntity(newUser, HttpStatus.OK);
+            return new ResponseEntity(accountDTO, HttpStatus.OK);
         }
         else{
             return new ResponseEntity("User Name Already Exists",HttpStatus.BAD_REQUEST);
